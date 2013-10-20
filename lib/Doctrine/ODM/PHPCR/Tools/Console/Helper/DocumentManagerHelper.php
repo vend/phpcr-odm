@@ -20,7 +20,7 @@
 namespace Doctrine\ODM\PHPCR\Tools\Console\Helper;
 
 use Symfony\Component\Console\Helper\Helper;
-use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use PHPCR\SessionInterface;
 
 /**
@@ -31,17 +31,17 @@ class DocumentManagerHelper extends Helper
     protected $session;
 
     /**
-     * @var DocumentManager
+     * @var DocumentManagerInterface
      */
     protected $dm;
 
     /**
      * Constructor
      *
-     * @param SessionInterface $session
-     * @param DocumentManager  $dm
+     * @param SessionInterface         $session
+     * @param DocumentManagerInterface $dm
      */
-    public function __construct(SessionInterface $session = null, DocumentManager $dm = null)
+    public function __construct(SessionInterface $session = null, DocumentManagerInterface $dm = null)
     {
         if (!$session && $dm) {
             $session = $dm->getPhpcrSession();

@@ -52,7 +52,7 @@ abstract class PersistentCollection implements Collection
     protected $initialized = false;
 
     /**
-     * @var DocumentManager
+     * @var DocumentManagerInterface
      */
     protected $dm;
 

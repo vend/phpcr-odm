@@ -3,13 +3,14 @@
 namespace Doctrine\ODM\PHPCR\Query\Builder;
 
 use Doctrine\ODM\PHPCR\Exception\RuntimeException;
-use PHPCR\Query\QOM\QueryObjectModelFactoryInterface;
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadataFactory;
-use PHPCR\Query\QOM\QueryObjectModelConstantsInterface as QOMConstants;
 use Doctrine\ODM\PHPCR\Query\Query;
-use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Doctrine\ODM\PHPCR\Query\Builder\AbstractNode as QBConstants;
 use Doctrine\ODM\PHPCR\Exception\InvalidArgumentException;
+
+use PHPCR\Query\QOM\QueryObjectModelFactoryInterface;
+use PHPCR\Query\QOM\QueryObjectModelConstantsInterface as QOMConstants;
 
 /**
  * Class which converts a Builder tree to a PHPCR Query
@@ -19,17 +20,17 @@ use Doctrine\ODM\PHPCR\Exception\InvalidArgumentException;
 class BuilderConverterPhpcr
 {
     /**
-     * @var PHPCR\Query\QOM\QueryObjectModelFactoryInterface
+     * @var QueryObjectModelFactoryInterface
      */
     protected $qomf;
 
     /**
-     * @var Doctrine\ODM\PHPCR\Mapping\ClassMetadataFactory
+     * @var ClassMetadataFactory
      */
     protected $mdf;
 
     /**
-     * @var Doctrine\ODM\PHPCR\DocumentManager
+     * @var DocumentManagerInterface
      */
     protected $dm;
 
@@ -69,7 +70,7 @@ class BuilderConverterPhpcr
     protected $constraint = null;
 
     public function __construct(
-        DocumentManager $dm,
+        DocumentManagerInterface $dm,
         QueryObjectModelFactoryInterface $qomf
     ) {
         $this->qomf = $qomf;

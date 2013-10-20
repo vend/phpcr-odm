@@ -37,16 +37,14 @@ class ReferrersCollection extends PersistentCollection
     private $originalReferrerPaths;
 
     /**
-     * @param DocumentManager $dm
-     * @param object          $document The document to get referrers of.
-     * @param string|null     $type     'weak', 'hard' or null to get both weak
-     *                                  and hard references.
-     * @param string|null     $name     If set, name of the referencing property.
-     * @param string|null     $locale   The locale to use.
-     * @param string|null     $refClass Class the referrer document must be
-     *                                  instanceof.
+     * @param DocumentManagerInterface $dm
+     * @param object                   $document The document to get referrers of.
+     * @param string|null              $type     'weak', 'hard' or null to get both weak and hard references.
+     * @param string|null              $name     If set, name of the referencing property.
+     * @param string|null              $locale   The locale to use.
+     * @param string|null              $refClass Class the referrer document must be instanceof.
      */
-    public function __construct(DocumentManager $dm, $document, $type = null, $name = null, $locale = null, $refClass = null)
+    public function __construct(DocumentManagerInterface $dm, $document, $type = null, $name = null, $locale = null, $refClass = null)
     {
         $this->dm = $dm;
         $this->document = $document;

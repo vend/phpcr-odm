@@ -19,7 +19,7 @@
 
 namespace Doctrine\ODM\PHPCR;
 
-use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 
 use PHPCR\NodeInterface;
 
@@ -28,9 +28,9 @@ interface DocumentClassMapperInterface
     /**
      * Determine the class name from a given node
      *
-     * @param DocumentManager $dm
-     * @param NodeInterface   $node
-     * @param string          $className explicit class to use. If set, this
+     * @param DocumentManagerInterface $dm
+     * @param NodeInterface            $node
+     * @param string                   $className explicit class to use. If set, this
      *      class will be used unless the declared document class is a subclass
      *      of this class. In that case the document class is used
      *
@@ -38,26 +38,26 @@ interface DocumentClassMapperInterface
      *      node if defined and the Generic document if no better class can be
      *      found
      */
-    public function getClassName(DocumentManager $dm, NodeInterface $node, $className = null);
+    public function getClassName(DocumentManagerInterface $dm, NodeInterface $node, $className = null);
 
     /**
      * Write any relevant meta data into the node to be able to map back to a class name later
      *
-     * @param DocumentManager $dm
-     * @param NodeInterface   $node
-     * @param string          $className
+     * @param DocumentManagerInterface $dm
+     * @param NodeInterface            $node
+     * @param string                   $className
      */
-    public function writeMetadata(DocumentManager $dm, NodeInterface $node, $className);
+    public function writeMetadata(DocumentManagerInterface $dm, NodeInterface $node, $className);
 
     /**
      * Determine if the document is instance of the specified $className and
      * throw exception if not.
      *
-     * @param DocumentManager $dm
-     * @param object          $document
-     * @param string          $className
+     * @param DocumentManagerInterface $dm
+     * @param object                   $document
+     * @param string                   $className
      *
      * @throws PHPCRException if document is not of type $className
      */
-    public function validateClassName(DocumentManager $dm, $document, $className);
+    public function validateClassName(DocumentManagerInterface $dm, $document, $className);
 }

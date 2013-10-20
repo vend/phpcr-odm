@@ -36,12 +36,12 @@ class ReferenceManyCollection extends PersistentCollection
     /**
      * Creates a new persistent collection.
      *
-     * @param DocumentManager $dm              The DocumentManager the collection will be associated with.
-     * @param array           $referencedNodes An array of referenced nodes (UUID or path)
-     * @param string          $targetDocument  The class name of the target documents
-     * @param string          $locale          The locale to use during the loading of this collection
+     * @param DocumentManagerInterface $dm              The DocumentManager the collection will be associated with.
+     * @param array                    $referencedNodes An array of referenced nodes (UUID or path)
+     * @param string                   $targetDocument  The class name of the target documents
+     * @param string                   $locale          The locale to use during the loading of this collection
      */
-    public function __construct(DocumentManager $dm, array $referencedNodes, $targetDocument, $locale = null)
+    public function __construct(DocumentManagerInterface $dm, array $referencedNodes, $targetDocument, $locale = null)
     {
         $this->dm = $dm;
         $this->referencedNodes = $referencedNodes;

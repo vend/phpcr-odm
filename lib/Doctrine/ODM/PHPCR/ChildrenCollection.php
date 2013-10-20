@@ -40,13 +40,13 @@ class ChildrenCollection extends PersistentCollection
     /**
      * Creates a new persistent collection.
      *
-     * @param DocumentManager $dm                 The DocumentManager the collection will be associated with.
-     * @param object          $document           The parent document instance
-     * @param string|array    $filter             filter string or array of filter string
-     * @param null|int        $fetchDepth         optional fetch depth
-     * @param string          $locale             the locale to use during the loading of this collection
+     * @param DocumentManagerInterface $dm                 The DocumentManager the collection will be associated with.
+     * @param object                   $document           The parent document instance
+     * @param string|array             $filter             filter string or array of filter string
+     * @param null|int                 $fetchDepth         optional fetch depth
+     * @param string                   $locale             the locale to use during the loading of this collection
      */
-    public function __construct(DocumentManager $dm, $document, $filter = null, $fetchDepth = null, $locale = null)
+    public function __construct(DocumentManagerInterface $dm, $document, $filter = null, $fetchDepth = null, $locale = null)
     {
         $this->dm = $dm;
         $this->document = $document;

@@ -44,7 +44,7 @@ class DocumentRepository implements ObjectRepository
     const QUERY_REPLACE_WITH_FIELDNAMES = 1;
 
     /**
-     * @var DocumentManager
+     * @var DocumentManagerInterface
      */
     protected $dm;
 
@@ -66,8 +66,8 @@ class DocumentRepository implements ObjectRepository
     /**
      * Initializes a new <tt>DocumentRepository</tt>.
      *
-     * @param DocumentManager $dm            The DocumentManager to use.
-     * @param ClassMetadata   $classMetadata The class descriptor.
+     * @param DocumentManagerInterface $dm            The DocumentManager to use.
+     * @param ClassMetadata            $classMetadata The class descriptor.
      */
     public function __construct($dm, ClassMetadata $class)
     {
@@ -218,7 +218,7 @@ class DocumentRepository implements ObjectRepository
     }
 
     /**
-     * @return DocumentManager
+     * @return DocumentManagerInterface
      */
     public function getDocumentManager()
     {
@@ -311,7 +311,7 @@ class DocumentRepository implements ObjectRepository
      *
      * @param string $selectorName     name of the selector, defaults to 'a'
      *
-     * @return \Doctrine\ODM\PHPCR\Query\Builder
+     * @return \Doctrine\ODM\PHPCR\Query\Builder\QueryBuilder
      */
     public function createQueryBuilder($selectorName)
     {

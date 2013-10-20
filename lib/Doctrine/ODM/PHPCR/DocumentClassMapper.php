@@ -19,7 +19,7 @@
 
 namespace Doctrine\ODM\PHPCR;
 
-use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 
 use PHPCR\NodeInterface;
 use PHPCR\PropertyType;
@@ -34,7 +34,7 @@ class DocumentClassMapper implements DocumentClassMapperInterface
     /**
      * {@inheritDoc}
      */
-    public function getClassName(DocumentManager $dm, NodeInterface $node, $className = null)
+    public function getClassName(DocumentManagerInterface $dm, NodeInterface $node, $className = null)
     {
         if ($node->hasProperty('phpcr:class')) {
             $nodeClassName = $node->getProperty('phpcr:class')->getString();
@@ -54,7 +54,7 @@ class DocumentClassMapper implements DocumentClassMapperInterface
     /**
      * {@inheritDoc}
      */
-    public function writeMetadata(DocumentManager $dm, NodeInterface $node, $className)
+    public function writeMetadata(DocumentManagerInterface $dm, NodeInterface $node, $className)
     {
         if ('Doctrine\\ODM\\PHPCR\\Document\\Generic' !== $className) {
             $node->setProperty('phpcr:class', $className, PropertyType::STRING);
@@ -70,7 +70,7 @@ class DocumentClassMapper implements DocumentClassMapperInterface
     /**
      * {@inheritDoc}
      */
-    public function validateClassName(DocumentManager $dm, $document, $className)
+    public function validateClassName(DocumentManagerInterface $dm, $document, $className)
     {
         if (!$document instanceof $className) {
             $class = $dm->getClassMetadata(get_class($document));
